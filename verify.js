@@ -1,12 +1,5 @@
 function startup() {
-    var account_number = $('[name=account_number]');
-    var routing_number = $('[name=routing_number]');
-
-    var button = $('<button type="button">Verify</button>');
-    var result_text = $('<input name="bank_validation" type="text" disabled/>');
-
-    account_number.after(button);
-    account_number.after(result_text);
+    button = $('[name=verifyAccount]');
 
     button.click(function () {
         $.ajax({
@@ -17,7 +10,7 @@ function startup() {
                     withCredentials: true
                 }}
         ).done(function (data) {
-                result_text.val(data.result)
+                $('[namn=account_verify]').val(data.result)
             });
     });
 }
